@@ -1,0 +1,168 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mathptmx}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\title{Fair Shares That Depend on How Countries Are Counted:\\ Merging, Splitting and the Allocation of the Carbon Budget}
+\author{Noah Parsons\\ \small Independent Researcher, Newcastle, Wyoming, United States\\ \small \texttt{parsons.m.noah@gmail.com}}
+\date{Working paper, as of 22 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Equity-based assessments of national climate targets divide a global emissions budget among countries using indicators such as population, income and historical emissions. The same assessments are applied to blocs such as the European Union and, increasingly, to regions and cities. This paper asks whether the result depends on how the parties are grouped. For allocation rules that give each party a share proportional to a weight computed from its indicators, the answer is that it does unless the weight is linear in the indicators. Two consequences follow. First, no such rule can at once keep every allocation non-negative, give less to parties with higher income or higher historical emissions, and be unaffected by merging or splitting. Second, when the weight is a population times a function of per-capita indicators, the direction of the effect is fixed by the convexity of that function: convex functions reward splitting and concave ones reward merging. Applied to the capability-based allocation of a recent equity framework, in which shares are proportional to population divided by income per head, the ratio between a group's total assessed separately and as one bloc equals the ratio of the arithmetic to the harmonic mean of its members' incomes. With 2022 data, the 27 members of the European Union receive 1.02\% of global positive emissions when assessed separately and 0.98\% when assessed as one bloc; the members of the African Union with available data receive 47.4\% and 31.0\%. Equal-per-capita, per-capita-convergence and untruncated cumulative-per-capita allocations are unaffected; truncating negative cumulative budgets at zero makes them affected.
+\end{abstract}
+
+\section{Introduction}
+
+Since the Paris Agreement, a large literature has translated the equity principles recognised by the IPCC (equality, responsibility, capability and the right to development) into quantitative ``fair shares'' of a global emissions budget or pathway, and has used them to assess the ambition of national targets \cite{rdp2017,rdp2023}. The same methods are applied to parties of very different size. The European Union submits a single nationally determined contribution and is routinely assessed as one party, while its members are also assessed individually. More recently, the methods have been extended below the national level, to thousands of regions and local governments \cite{multilevel}.
+
+A fair share that changes when the same people, income and emissions are counted as one party rather than several would be hard to defend, and it would invite strategic grouping. In the theory of claims problems this property is known as non-manipulability by merging and splitting, and the rules that satisfy it are well understood: with a single characteristic they are the proportional rule \cite{oneill,chun,defrutos}, and with several they are rules linear in the characteristics \cite{jms}. The climate literature has analysed the division of the carbon budget as a claims problem \cite{gg2016,gg2020}, but with the classical single-claim rules, not the multi-indicator rules that equity assessments actually use.
+
+This paper applies the merging-and-splitting question to those rules. Section~\ref{sec:setting} sets out a simple class of indicator-weighted proportional rules, which contains the capability, per-capita and cumulative-per-capita approaches. Section~\ref{sec:results} shows that within this class immunity to merging and splitting is equivalent to linearity of the weight (a special case of \cite{jms}), derives an impossibility for rules that are sensitive to capability or responsibility, and shows that the direction of the effect is governed by convexity. Section~\ref{sec:approaches} classifies the main approaches, and Section~\ref{sec:numbers} gives the size of the effect for the European Union and the African Union.
+
+\section{Setting}\label{sec:setting}
+
+There is a set $N$ of parties. Party $i$ has an indicator vector $a_i\in\mathbb{R}^m_{+}$ whose components are \emph{additive}: when parties are combined, the indicator of the combination is the sum of theirs. Population, gross domestic product and cumulative emissions are additive; income per head is not. A budget $B>0$ is to be divided.
+
+\begin{definition}
+An \emph{indicator rule} with weight function $w:\mathbb{R}^m_{+}\to\mathbb{R}_{+}$ allocates
+\[
+x_i \;=\; B\,\frac{w(a_i)}{\sum_{j\in N} w(a_j)}
+\]
+whenever the denominator is positive. A \emph{per-capita indicator rule} has $w(a)=P(a)\,\varphi(z(a))$, where $P(a)>0$ is population and $z(a)=a/P(a)$ is the vector of per-capita indicators.
+\end{definition}
+
+For a group $S\subseteq N$, write $a_S=\sum_{i\in S}a_i$ for the indicators of the merged party.
+
+\begin{definition}
+A rule is \emph{merging-proof} if, for every instance and every group $S$, the total allocated to the members of $S$ equals the allocation of the party formed by merging them, all other parties unchanged. It is \emph{level-consistent} if, for every $S$, allocating to $S$ as one party and then dividing its allocation among the members of $S$ by the same rule gives each member what it would receive if the rule were applied to the members directly.
+\end{definition}
+
+\section{Results}\label{sec:results}
+
+\begin{proposition}\label{prop:linear}
+For an indicator rule with continuous weight $w$, the following are equivalent: (i) the rule is merging-proof; (ii) the rule is level-consistent; (iii) $w$ is additive, $w(a+b)=w(a)+w(b)$; (iv) $w(a)=c\cdot a$ for some $c\in\mathbb{R}^m_{+}$.
+\end{proposition}
+
+\begin{proof}
+Fix a group $S$ and let $W_S=\sum_{i\in S}w(a_i)$ and $W_R=\sum_{j\notin S}w(a_j)$, and take $W_R>0$. The members of $S$ receive $B\,W_S/(W_S+W_R)$ in total; the merged party receives $B\,w(a_S)/(w(a_S)+W_R)$. Since $t\mapsto t/(t+W_R)$ is strictly increasing, the two are equal if and only if $w(a_S)=W_S$. Applying this to all pairs gives (i)$\Leftrightarrow$(iii). For (ii): dividing the merged allocation among the members gives member $i$ the amount $B\,\frac{w(a_S)}{w(a_S)+W_R}\cdot\frac{w(a_i)}{W_S}$, while direct application gives $B\,\frac{w(a_i)}{W_S+W_R}$; these agree for every member if and only if $w(a_S)=W_S$. Finally, a continuous additive function on the cone $\mathbb{R}^m_{+}$ is linear (Cauchy's functional equation), and non-negativity on the cone forces $c\ge 0$.
+\end{proof}
+
+Proposition~\ref{prop:linear} is a special case of the characterisation of reallocation-proof rules by Ju, Miyagawa and Sakai \cite{jms}; the short proof is included because the class of rules here is narrower and the argument is elementary.
+
+Call a rule \emph{capability-sensitive} if, for fixed population and other indicators, a party's weight strictly decreases as its income increases, and \emph{responsibility-sensitive} if its weight strictly decreases as its cumulative emissions increase.
+
+\begin{theorem}\label{thm:impossibility}
+No indicator rule with non-negative weights is both merging-proof and capability-sensitive. The same holds for responsibility-sensitivity.
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{prop:linear}, a merging-proof rule has $w(a)=c\cdot a$ with every $c_k\ge 0$, so $w$ is non-decreasing in every indicator, including income and cumulative emissions.
+\end{proof}
+
+The theorem identifies the trade-off that existing approaches already make, without naming it. A rule that is linear in income with a negative coefficient on income (or on emissions) is merging-proof but gives sufficiently rich (or high-emitting) parties negative allocations; this is exactly what cumulative-per-capita approaches do when they assign negative remaining budgets \cite{rdp2023}. Setting those negative values to zero restores non-negativity and, by the theorem, loses merging-proofness.
+
+For per-capita rules, the direction of the effect can be read off the shape of $\varphi$.
+
+\begin{theorem}\label{thm:convex}
+Let the rule be a per-capita indicator rule with $\varphi$ convex. Then for every group $S$, the members of $S$ receive at least as much in total when assessed separately as when assessed as one party, with strict inequality if $\varphi$ is strictly convex and the members' per-capita indicators are not all equal. If $\varphi$ is concave, the inequality is reversed.
+\end{theorem}
+
+\begin{proof}
+The per-capita indicators of the merged party are the population-weighted average $z(a_S)=\sum_{i\in S}\lambda_i z(a_i)$ with $\lambda_i=P(a_i)/P(a_S)$. Hence
+\[
+W_S=\sum_{i\in S}P(a_i)\,\varphi(z(a_i)) = P(a_S)\sum_{i\in S}\lambda_i\,\varphi(z(a_i)) \;\ge\; P(a_S)\,\varphi\!\Big(\sum_{i\in S}\lambda_i z(a_i)\Big)=w(a_S)
+\]
+by Jensen's inequality, and the conclusion follows from the monotonicity argument in the proof of Proposition~\ref{prop:linear}.
+\end{proof}
+
+\begin{corollary}\label{cor:amhm}
+For the rule with $w=P^2/Y$, that is, population divided by income per head, the ratio of a group's total weight assessed separately to its weight as one party is
+\[
+\frac{W_S}{w(a_S)} \;=\; \frac{\sum_{i\in S}\lambda_i y_i}{\big(\sum_{i\in S}\lambda_i/y_i\big)^{-1}},
+\]
+the ratio of the population-weighted arithmetic mean to the population-weighted harmonic mean of the members' incomes per head $y_i$. It is at least 1, and equals 1 only when all members have the same income per head.
+\end{corollary}
+
+\begin{proof}
+Here $\varphi(y)=1/y$ and $w(a_S)=P(a_S)/\bar y_S$ with $\bar y_S=\sum_i\lambda_i y_i$, while $W_S=P(a_S)\sum_i\lambda_i/y_i$. Divide.
+\end{proof}
+
+\section{The main equity approaches}\label{sec:approaches}
+
+Table~\ref{tab:approaches} classifies the approaches as they are usually implemented, treating each as a one-period indicator rule. Dynamic versions apply the same weights year by year, and the classification carries over to each year.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{@{}p{5.2cm}p{3.6cm}p{4.6cm}@{}}
+\toprule
+Approach & Weight & Merging and splitting\\
+\midrule
+Equal per capita & $P$ & Unaffected (linear)\\
+Per-capita convergence & $(1-\theta)\,e_0+\theta\,\pi$ & Unaffected (linear)\\
+Equal cumulative per capita, negative budgets kept & $\pi(R+H)-h$ & Unaffected (linear), but negative for high historical emitters\\
+Equal cumulative per capita, negative budgets set to zero & $\max\{0,\pi(R+H)-h\}$ & Splitting favoured (convex)\\
+Capability as population over income per head \cite{rdp2023} & $P^2/Y$ & Splitting favoured (strictly convex); Corollary~\ref{cor:amhm}\\
+Capacity above a development threshold, from national averages & $P\max\{0,y-T\}$ & Splitting raises the group's obligation (convex)\\
+Capacity above a development threshold, from individual incomes & $\sum_{\text{persons}}\max\{0,y_p-T\}$ & Unaffected (additive over persons)\\
+\bottomrule
+\end{tabular}
+\caption{Classification of common approaches. $P$: population; $Y$: GDP; $y=Y/P$; $e_0$: share of world emissions in the base year; $\theta\in[0,1]$: convergence weight; $\pi$: share of world population; $R$: remaining global budget; $H$, $h$: global and national historical emissions; $T$: development threshold.}
+\label{tab:approaches}
+\end{table}
+
+The last two rows show that how capacity is computed in the Greenhouse Development Rights framework matters: computed from within-country income distributions, capacity is a sum over persons and therefore additive, so the problem does not arise; computed from national average income, it is convex in income per head and the problem does arise.
+
+\section{How large is the effect?}\label{sec:numbers}
+
+Using population and GDP (purchasing-power parity) for 2022 from the Our World in Data compilation \cite{owid}, for the 164 countries with both, the capability rule $w=P^2/Y$ gives:
+
+\begin{center}\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Group & Separately & As one bloc & Ratio of weights (Corollary~\ref{cor:amhm})\\
+\midrule
+European Union (27) & 1.02\% & 0.98\% & 1.045\\
+African Union (50 members with data) & 47.4\% & 31.0\% & 2.005\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent The shares are of global positive emissions in that year. For the African Union, whether its members are assessed separately or together changes the group's assessed share by about a third. For the EU, the change is about 4\%.
+
+For the truncated cumulative-per-capita rule, an illustration with 1950--2022 emissions discounted at 1.5\% a year (following \cite{rdp2023}) and equal-per-capita entitlements to actual global emissions finds negative balances for 25 of the 27 EU members. Truncated separately, the members' positive balances sum to 0.15\,Gt; the EU's combined balance is $-68$\,Gt, which truncates to zero.
+
+\section{Discussion}
+
+The results suggest three practical steps for equity assessments. First, an assessment should state whether a bloc is assessed as one party or as the sum of its members, and for non-linear rules should report both. Second, the choice of rule involves a trade-off that Theorem~\ref{thm:impossibility} makes explicit: a rule that is non-negative and gives less to richer or higher-emitting parties cannot also be indifferent to grouping. Negative allocations in cumulative-per-capita approaches, often presented as an awkward by-product, are the price of that indifference. Third, extensions to regions and cities inherit the problem through level consistency (Proposition~\ref{prop:linear}): for non-linear rules, allocating to a country and dividing among its regions gives a different answer from allocating to the regions directly, so the order of allocation must be fixed and reported.
+
+\paragraph{Limitations.} The rules are treated as one-period indicator rules; the published frameworks are dynamic and combine components, and a full treatment of each implementation would need its exact specification. The development threshold in Table~\ref{tab:approaches} is illustrative. The numerical illustrations use one data source and one year.
+
+\paragraph{Disclosure.} The literature search, the numerical calculations and the first draft of this paper were prepared with the assistance of an AI system (Claude, Anthropic). The author has checked the proofs and the calculations; any errors are the author's.
+
+\begin{thebibliography}{99}
+\bibitem{rdp2017} Y. Robiou du Pont, M.\,L. Jeffery, J. G\"utschow, J. Rogelj, P. Christoff and M. Meinshausen, Equitable mitigation to achieve the Paris Agreement goals, \emph{Nature Climate Change} 7 (2017) 38--43.
+\bibitem{rdp2023} Y. Robiou du Pont, M. Dekker, D.\,P. van Vuuren and M. Schaeffer, Effect of discontinuous fair-share emissions allocations immediately based on equity, \emph{Nature Communications} 16 (2025), doi:10.1038/s41467-025-62947-9. The methods are described here as in the 2023 manuscript version, Zenodo, doi:10.5281/zenodo.8003393.
+\bibitem{multilevel} Y. Robiou du Pont, D. Manya, K. Song and A. Hsu, Equity-based emissions allocations in multi-level governance, preprint, Research Square (2025), doi:10.21203/rs.3.rs-5989247/v1.
+\bibitem{oneill} B. O'Neill, A problem of rights arbitration from the Talmud, \emph{Mathematical Social Sciences} 2 (1982) 345--371.
+\bibitem{chun} Y. Chun, The proportional solution for rights problems, \emph{Mathematical Social Sciences} 15 (1988) 231--246.
+\bibitem{defrutos} M.\,A. de Frutos, Coalitional manipulations in a bankruptcy problem, \emph{Review of Economic Design} 4 (1999) 255--272.
+\bibitem{jms} B.-G. Ju, E. Miyagawa and T. Sakai, Non-manipulable division rules in claim problems and generalizations, \emph{Journal of Economic Theory} 132 (2007) 1--26.
+\bibitem{gg2016} J.-M. Gim\'enez-G\'omez, J. Teixid\'o-Figueras and C. Vilella, The global carbon budget: a conflicting claims problem, \emph{Climatic Change} 136 (2016) 693--703.
+\bibitem{gg2020} J.\,A. Duro, J.-M. Gim\'enez-G\'omez and C. Vilella, The allocation of CO$_2$ emissions as a claims problem, \emph{Energy Economics} 86 (2020) 104652.
+\bibitem{owid} Our World in Data, CO$_2$ and greenhouse gas emissions dataset, \url{https://github.com/owid/co2-data}, accessed 22 November 2026.
+\end{thebibliography}
+
+\end{document}
