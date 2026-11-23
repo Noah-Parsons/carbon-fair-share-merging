@@ -2,6 +2,8 @@
 
 Noah Parsons, as of 22 November 2026
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24451197.svg)](https://doi.org/10.5281/zenodo.24451197)
+
 Code and data for the paper *Fair Shares That Depend on How Countries Are Counted: Merging, Splitting and the Allocation of the Carbon Budget* (`fairshare_merging.pdf`, source `fairshare_merging.tex`).
 
 ## Question
@@ -57,3 +59,7 @@ python verify/ecpc_check.py
 ## AI assistance
 
 The analysis code and drafts were produced with the help of an AI assistant (Claude, made by Anthropic).
+
+## Citation
+
+Parsons, N. (2026). *Fair Shares That Depend on How Countries Are Counted: Merging, Splitting and the Allocation of the Carbon Budget*. Zenodo. https://doi.org/10.5281/zenodo.24451197
